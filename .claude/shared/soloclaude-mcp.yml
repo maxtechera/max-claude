@@ -1,0 +1,180 @@
+## Decision_Matrix
+Flag_Control:
+  --c7: "Force Context7→docs | --seq: Force Sequential→analysis | --magic: Force Magic→UI"
+  --pup: "Force Puppeteer→browser | --all-mcp: Enable all | --no-mcp: Disable all"
+
+User_Triggers:
+  "docs for X": "C7(resolve-library-id: X) → get-docs"
+  "how to use Y in Z": "C7(resolve-library-id: Z) → get-docs(topic: Y)"
+  "need button/form/component": "Magic(builder) → integrate"
+  "why slow/broken": "Sequential(analysis) → implement fix"
+  "design architecture": "Sequential(system design) → C7(patterns)"
+
+Context_Triggers:
+  Import_errors: "C7(resolve-library-id) → verify docs"
+  Complex_debugging: "Sequential(root cause) → native implementation"
+  UI_requests: "Magic(builder/refiner) → Puppeteer(test)"
+  Performance_issues: "Sequential(analysis) → optimize implementation"
+
+Research_First_Methodology:
+  External_library_detected: "C7 lookup REQUIRED (blocks without docs)"
+  New_component: "Magic search REQUIRED or existing pattern"
+  API_integration: "WebSearch REQUIRED for official docs"
+  Unknown_pattern: "Sequential thinking + research REQUIRED"
+  Confidence_less_than_90: "Implementation BLOCKED until research complete"
+
+## Server_Capabilities_Extended
+Context7_Usage:
+  Documentation_Lookup: "resolve-library-id with user term → get-docs with topic"
+  Progressive_Loading: "Start with general docs → drill down to specifics"
+  Quality_Control: "✓Relevant docs→Proceed | ⚠Partial→Try different terms | ✗No match→alternatives"
+
+Sequential_Usage:
+  Complex_Analysis: "Problem decomposition → guide C7 docs lookup → combine analysis"
+  System_Design: "Architectural thinking → pattern identification → implementation planning"
+  Quality_Control: "✓Clear analysis+steps→Implement | ⚠Partial→Continue thoughts | ✗Timeout→Native fallback"
+
+Magic_Usage:
+  UI_Generation: "Builder with user requirements+project context → refiner if needed → integrate"
+  Component_Creation: "Match requirements → generate → integrate → test with Puppeteer"
+  Quality_Control: "✓Component matches→Integrate | ⚠Close needs changes→Refiner | ✗Poor→Try different terms"
+
+Puppeteer_Usage:
+  Browser_Automation: "Navigate → screenshot → interact → validate → test"
+  Testing_Integration: "Magic components → Puppeteer validation → report results"
+  Quality_Control: "Successful automation → document patterns | Failures → fallback approaches"
+
+## Token_Economics
+Budget_Allocation: "Native:0 | Light MCP:100-500 | Medium MCP:500-2K | Heavy MCP:2K-10K"
+Escalation_Strategy:
+  1: "Native first for simple tasks"
+  2: "C7 for library questions"
+  3: "Sequential for complex analysis"
+  4: "Combine MCPs for synergy"
+
+Abort_Conditions: ">50% context→native | MCP timeout/error→fallback | Diminishing returns→stop"
+Cost_Optimization: "Quick→C7 only | Architecture→Sequential | UI→Magic | Default→Native"
+
+UltraCompressed_Integration:
+  Activation: "--uc flag|High context|Token budget constraints"
+  Benefits: "~70% reduction | Clarity→conciseness | Legend auto-generation"
+  MCP_Usage: "Compressed requests | Efficient responses | Smart caching"
+
+## Workflows
+Library_Research_Flow:
+  1: "C7 resolve-library-id with user term"
+  2: "Evaluate options if multiple results"
+  3: "C7 get-docs with specific topic"
+  4: "Sequential analysis if insufficient"
+  5: "Implement with native tools"
+
+Complex_Analysis_Flow:
+  1: "Sequential problem decomposition"
+  2: "Guide C7 docs lookup based on analysis"
+  3: "Combine analysis + documentation"
+  4: "Create implementation plan"
+  5: "Execute with native tools"
+
+UI_Generation_Flow:
+  1: "Magic builder with user requirements + project context"
+  2: "Magic refiner if component needs adjustment"
+  3: "Integrate component into project structure"
+  4: "Puppeteer validation and testing"
+  5: "Document successful patterns"
+
+## Quality_Control
+Context7_Validation:
+  ✓_Relevant_docs: "Proceed with implementation"
+  ⚠_Partial_coverage: "Try different search terms or broader query"
+  ✗_No_match: "Use Sequential alternatives or ask user for clarification"
+
+Sequential_Validation:
+  ✓_Clear_analysis: "Steps identified → proceed with implementation"
+  ⚠_Partial_thinking: "Continue thoughts or supplement with other MCPs"
+  ✗_Unclear_timeout: "Fallback to native tools + user questions"
+
+Magic_Validation:
+  ✓_Component_matches: "Integrate into project structure"
+  ⚠_Close_needs_changes: "Use refiner with specific feedback"
+  ✗_Poor_quality: "Try different terms or fallback to manual implementation"
+
+Multi_MCP_Coordination:
+  Results_enhance_each_other: "Continue multi-MCP approach"
+  Conflict_in_recommendations: "Use most authoritative source"
+  Redundant_information: "Stop additional MCP calls"
+
+## Command_Integration
+Planning_Mode_Integration:
+  Default: "Execute immediately unless --plan flag"
+  --plan_flag: "Show detailed plan including MCP usage before execution"
+  MCP_Planning: "Explain which MCPs will be used and why"
+
+MCP_Flag_Hierarchy:
+  Explicit_flags: "Override all automatic detection"
+  Auto_activation: "Based on user triggers and context"
+  Context_triggers: "Smart activation based on error patterns"
+  --no_mcp: "Overrides all other MCP activation"
+
+Revenue_Integration:
+  Pattern_extraction: "C7 docs → reusable patterns → monetization potential"
+  Content_creation: "Magic UI components → tutorial opportunities"
+  Time_tracking: "MCP efficiency → billable hour optimization"
+  Client_privacy: "MCP usage respects confidentiality levels"
+
+## Error_Recovery
+Context7_Failures:
+  Library_not_found: "Try broader search terms → Sequential alternatives"
+  Docs_incomplete: "Supplement with Sequential analysis → fallback to native"
+  API_timeout: "Cache partial results → continue with native tools"
+
+Sequential_Failures:
+  Timeout_limits: "Use partial analysis + note limitations → continue"
+  Token_limits: "Summarize key insights → switch to native implementation"
+  Unclear_results: "Ask clarifying questions → avoid retry without changes"
+
+Magic_Failures:
+  No_components_found: "Try different search terms once → manual implementation"
+  Poor_component_quality: "Use refiner with context → document limitations"
+  Integration_issues: "Manual integration → document for future improvement"
+
+Multi_MCP_Failures:
+  Resource_exhaustion: "Continue with single best-performing MCP"
+  Conflicting_results: "Use most reliable source → document discrepancies"
+  Partial_failures: "Continue with successful MCPs → note limitations"
+
+## Best_Practices
+DO_Patterns:
+  - "Match MCP capabilities to user needs precisely"
+  - "Set appropriate token budgets for each operation"
+  - "Validate results before proceeding with implementation"
+  - "Cache successful patterns for reuse"
+  - "Graceful fallback to native tools when needed"
+  - "Use C7 for ALL external library documentation (research-first enforced)"
+  - "Cite MCP sources in final implementation"
+
+DONT_Patterns:
+  - "Use MCPs for simple tasks native tools handle well"
+  - "Chain MCPs without validation between steps"
+  - "Exceed 50% context usage without user awareness"
+  - "Retry failed operations without changing approach"
+  - "Use MCPs when immediate response needed"
+
+OPTIMIZE_Patterns:
+  - "Batch similar MCP calls when possible"
+  - "Reuse session results across related operations"
+  - "Start with least expensive MCP options"
+  - "Prefer native tools for file operations"
+  - "Document successful MCP patterns for team reuse"
+
+## Session_Management
+MCP_Session_Intelligence:
+  Context_preservation: "Cache MCP results across commands in session"
+  Pattern_recognition: "Learn which MCP combinations work best for user"
+  Preference_adaptation: "Adapt MCP usage to user's working style"
+  Error_learning: "Remember failed approaches to avoid repetition"
+
+Revenue_Optimization:
+  Billable_efficiency: "Track MCP usage impact on billable hour productivity"
+  Pattern_monetization: "Extract sellable patterns from MCP-assisted development"
+  Content_opportunities: "Flag MCP-assisted solutions for tutorial potential"
+  ROI_tracking: "Measure time saved vs MCP token costs"

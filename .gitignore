@@ -1,0 +1,36 @@
+# Logs
+logs/
+*.log
+
+# Claude operations documentation
+.claudedocs/
+
+# Task management (project-specific)
+./claudedocs/tasks/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+.Spotlight-V100
+.Trashes
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+.cache/
+
+# Backup files from install script
+solo-claude-backup.*
