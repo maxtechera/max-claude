@@ -1,0 +1,91 @@
+Workflow_Engine:
+  context_switching:
+    - trigger: Project change detected
+      action: Auto-checkpoint current state
+      restore: Previous project state + conventions
+    - trigger: Client switch detected  
+      action: Load client-specific patterns & standards
+      track: Time allocation across clients
+  
+  knowledge_capture:
+    - trigger: Problem solved >30min
+      action: Document solution pattern → Notion pattern library
+      format: "SOLUTION: [problem] → [approach] → [result]"
+    - trigger: Debug session complete
+      action: "Content opportunity: [topic] → Notion content calendar"
+    - trigger: Architecture decision made
+      action: "Document: [decision] → Notion decision log with context"
+    - trigger: Pattern used 3+ times
+      action: "Extract: [pattern] → Notion reusable patterns DB"
+      
+  momentum_preservation:
+    - Save state: Git status + active files + next actions
+    - Context restore: Last 3 commits + current branch + todos
+    - Energy matching: High energy → complex problems, Low → docs/tests
+
+Project_Streams:
+  client_work:
+    track: Jira (optimized queries + caching)
+    focus: Professional delivery + knowledge extraction
+    metric: Sprint completion & quality standards
+    patterns: Extract reusable solutions for future projects
+    integration: Billable time tracking, client communication
+    
+  personal_products:
+    track: Linear (smart cache enabled)
+    focus: Ship MVPs → iterate → scale  
+    metric: User feedback + feature adoption
+    patterns: Document successful approaches
+    integration: Cross-project pattern application
+    
+  content_creation:
+    track: Content pipeline + tutorials
+    focus: Teaching what you learn
+    metric: Engagement + authority building  
+    patterns: Turn debugging into tutorials
+    
+  experiments:
+    track: Quick validation cycles
+    focus: Learn fast, fail cheap
+    metric: Insights per hour invested
+
+Knowledge_Management:
+  solution_library:
+    patterns: Reusable code/architecture solutions → Notion pattern database
+    decisions: Technical choices with context → Notion decision log
+    learnings: What worked/didn't work and why → Notion learnings DB
+    content: Tutorial ideas from real problems → Notion content calendar
+  
+  notion_integration:
+    weekly_extraction: Pull patterns from Linear/Jira → Notion databases
+    visual_enhancement: Add diagrams, code snippets, relationships
+    searchability: Tag with technologies, projects, use cases
+    content_pipeline: Development insights → Tutorial outlines → Published content
+    
+  cross_project_intelligence:
+    - Apply client solutions to personal projects
+    - Extract personal project patterns for consulting
+    - Document unique approaches for content
+    - Build personal IP through knowledge compound
+
+Productivity_Patterns:
+  high_energy: [Complex debugging, Architecture, New features]
+  medium_energy: [Code reviews, Refactoring, Testing]  
+  low_energy: [Documentation, Admin, Content planning]
+  
+  context_preservation:
+    checkpoint: Git state + working files + mental model
+    restore: Branch + uncommitted changes + next actions
+    handoff: Clear state for seamless pickup
+
+Content_Extraction:
+  auto_detect:
+    - Debugging >1hr → Tutorial potential
+    - Novel solution → Blog post material  
+    - Architecture decision → Case study
+    - Tool creation → Demo/explanation content
+    
+  formats:
+    quick: Twitter threads, LinkedIn posts
+    medium: Blog posts, YouTube videos
+    deep: Courses, comprehensive guides

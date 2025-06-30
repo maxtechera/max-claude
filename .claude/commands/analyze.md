@@ -1,41 +1,111 @@
-**Purpose**: Multi-dimensional code and system analysis
+# /analyze - Multi-Dimensional Analysis with Revenue Intelligence
 
----
+Multi-dimensional code and system analysis enhanced with solopreneur revenue detection and pattern monetization insights.
 
-@include shared/universal-constants.yml#Universal_Legend
+## Core Function
+- Traditional code/architecture analysis
+- **Revenue opportunity detection** during analysis
+- Pattern extraction & monetization potential
+- Content creation opportunities identification
+- Client value enhancement recommendations
 
-## Command Execution
-Execute: immediate. --plan→show plan first
-Legend: Generated based on symbols used in command
-Purpose: "[Action][Subject] in $ARGUMENTS"
+## Enhanced Analysis Modes
 
-Multi-dimensional analysis on code, arch, or problem in $ARGUMENTS.
+### --code (Code Quality + Revenue)
+**Technical Analysis**:
+- Quality review → naming, structure, DRY, complexity
+- Bugs → null checks, boundaries, types  
+- Security → injection, auth, validation
+- Performance → O(n²), N+1, memory
 
-@include shared/flag-inheritance.yml#Universal_Always
+**Revenue Intelligence**:
+- Pattern detection → Package opportunities
+- Complex solutions → Tutorial content potential
+- Reusable components → Template monetization
+- Architecture decisions → Case study material
 
-Examples:
-- `/analyze --code --think` - Code review w/ context
-- `/analyze --arch --think-hard` - Deep arch analysis  
-- `/analyze --security --ultrathink` - Comprehensive security audit
+### --arch (Architecture + Business Value)
+**Technical Analysis**:
+- System design & patterns analysis
+- Layer coupling & maintainability
+- Scalability bottlenecks identification
+- Improvement recommendations
 
-Analysis modes:
+**Business Intelligence**:
+- Architecture decisions → Consulting opportunities
+- Complex designs → Content creation potential
+- Scalable patterns → Productization possibilities
+- Design choices → Authority building content
 
-**--code:** Quality review→naming, structure, DRY, complexity | Bugs→null checks, boundaries, types | Security→injection, auth, validation | Perf→O(n²), N+1, memory
+### --revenue (New: Pure Revenue Focus)
+**Monetization Analysis**:
+- Code reuse frequency → Package potential
+- Complex implementations → Course material
+- Debug solutions → Tutorial opportunities
+- Architecture choices → Consulting value
+- Pattern extraction → Revenue estimation
 
-**--arch:** System design & patterns | Layer coupling | Scalability bottlenecks | Maintainability assessment | Improvement suggestions
+### --security (Security + Compliance Value)
+- OWASP top 10 compliance analysis
+- Auth & authorization review
+- Data handling & encryption audit
+- **Compliance consulting** opportunities
 
-**--profile:** CPU, memory, execution time | Network latency, DB queries | Frontend metrics | Bottleneck identification | Optimization recommendations  
+### --perf (Performance + Cost Analysis)
+- Bottleneck analysis & optimization
+- Algorithm complexity & efficiency
+- Resource utilization & costs
+- **Performance consulting** value estimation
 
-**--security:** OWASP top 10 | Auth & authorization | Data handling & encryption | Attack vector identification
+## Example Usage
+```bash
+/analyze --code --revenue          # Code review + monetization analysis
+/analyze --arch --think --revenue  # Deep architecture + business value
+/analyze components/ --revenue     # Scan components for package potential
+```
 
-**--perf:** Bottleneck analysis | Algorithm complexity | DB queries & indexes | Caching strategies | Resource utilization
+## Enhanced Output Format
+```
+🔍 ANALYSIS RESULTS: src/auth/
 
-**--watch:** Continuous file monitoring | Real-time quality tracking | Auto re-analysis | Live metrics
+📊 TECHNICAL ANALYSIS
+Quality: 8.5/10 - Well structured, clear naming
+Security: 9/10 - Proper validation, secure auth flow
+Performance: 7/10 - Some optimization opportunities
 
-**--interactive:** Guided exploration | Step-by-step fixes | Live improvement
+💰 REVENUE OPPORTUNITIES DETECTED
+PATTERN: JWT Auth Flow (used 6x across projects)
+• Package potential: $297-497 "Secure Auth Kit"
+• Tutorial value: "JWT Auth in React" → 50K+ views
+• Consulting: Auth security review service
 
-@include shared/research-patterns.yml#Mandatory_Research_Flows
+CONTENT: Complex refresh token logic
+• Tutorial: "Bulletproof Token Refresh" → 25K+ views  
+• Course module: Part of "React Security Mastery"
+• Documentation: Authority building content
 
-@include shared/docs-patterns.yml#Standard_Notifications
+🎯 MONETIZATION ACTIONS
+1. Extract auth pattern → NPM package (8 hrs, $497 potential)
+2. Record auth tutorial → YouTube (4 hrs, $300+ value)
+3. Write security guide → Blog/LinkedIn (2 hrs, authority)
+4. Offer auth audit service → Consulting ($200/hr)
 
-@include shared/universal-constants.yml#Standard_Messages_Templates
+📈 BUSINESS VALUE
+• Pattern reuse savings: 40 hours across projects
+• Consulting opportunity: $2K+ auth security audits
+• Content pipeline: 3 high-value tutorials possible
+• Authority building: React security expertise
+```
+
+## Integration Features
+- **Pattern tracking**: Cross-project reuse detection
+- **Content mining**: Automatic tutorial opportunity identification  
+- **Market research**: Similar product/content analysis
+- **ROI calculation**: Time investment vs revenue potential
+
+## Solopreneur Focus
+- Every analysis includes revenue angle
+- Patterns tracked for monetization
+- Content opportunities flagged
+- Consulting value highlighted
+- Authority building paths identified

@@ -1,0 +1,52 @@
+Smart_Systems:
+  linear_cache:
+    always: true
+    benefit: 95% API reduction, instant responses
+    override: --force-fetch flag only
+    
+  session_bridge:
+    path: active_memory/session_bridge.md
+    use: Cross-terminal context preservation
+    
+  git_intelligence:
+    on_entry: git status + git log --oneline -5
+    use: Understand current work context
+    
+  checkpoints:
+    auto_triggers: [npm install, migrations, deploys]
+    command: /checkpoint for manual save
+    
+  project_memory:
+    auto_load: ./CLAUDE.md if exists
+    includes: ["@README.md", "@docs/ARCHITECTURE.md"]
+
+MCP_Integration:
+  philosophy: Research-first, implement with confidence
+  core_servers: [context7, sequential, magic, linear, jira, github, notion]
+  usage: See .claude/shared/soloclaude-mcp.yml for complete integration
+  optimization: Jira queries cached, Linear smart cache, C7 progressive loading
+  knowledge: Notion for pattern library, decision log, content planning
+
+Code_Standards:
+  comments: NONE unless explicitly requested
+  approach: MVP > perfect, iterate based on feedback
+  naming: Short, clear, no ceremony
+  patterns: Extract aggressively for reuse/sale
+  principles: YAGNI until proven needed
+
+Token_Economy:
+  symbols:
+    →: leads to / implies
+    &: and / with
+    '>': greater than / preferred over
+    ':': define / means
+    ✓: success / complete
+    ✗: failure / blocked
+  remove: [the, that, which, very, really, just]
+  format: bullets > paragraphs, code > explanation
+  compress: Auto-activate when context >70%
+
+Command_Library:
+  workflow: [/startup, /context-restore, /knowledge-capture, /project-switch]
+  productivity: [/energy-match, /session-checkpoint, /knowledge-search]
+  enhanced: [/analyze --knowledge, /build --pattern, /deploy --optimize]

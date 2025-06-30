@@ -1,0 +1,142 @@
+# Jira Optimization for Solopreneurs
+# Smart queries and caching for efficient client work management
+
+## Core Optimization Principles
+smart_querying:
+  - Single JQL queries over multiple API calls
+  - Request only essential fields to minimize response size
+  - Cache cloud IDs and user info for 7 days
+  - Limit results to actionable items only
+  - Combine context signals in one query
+
+## Essential Queries for Client Work
+
+client_startup:
+  description: "Daily client work overview - optimized for productivity"
+  jql: |
+    assignee = currentUser() 
+    AND resolution = Unresolved 
+    AND (
+      updated >= -1d 
+      OR priority in (P0, P1, "P0 - Critical", "P1 - High", "Critical", "High")
+      OR status changed AFTER -1d
+      OR status IN ("In Progress", "Blocked", "In Review")
+    )
+    ORDER BY priority ASC, updated DESC
+  fields: ["key", "summary", "status", "priority", "updated", "assignee"]
+  maxResults: 10
+  purpose: "Focus on what needs immediate attention"
+
+sprint_context:
+  description: "Current sprint progress for client delivery"
+  jql: |
+    assignee = currentUser()
+    AND sprint in openSprints()
+    AND resolution = Unresolved
+    ORDER BY rank ASC
+  fields: ["key", "summary", "status", "storyPoints", "updated"]
+  maxResults: 20
+  purpose: "Track sprint commitments and delivery"
+
+blockers_urgent:
+  description: "Blocked items requiring immediate attention"
+  jql: |
+    assignee = currentUser()
+    AND status = "Blocked"
+    AND resolution = Unresolved
+    ORDER BY priority ASC, updated DESC
+  fields: ["key", "summary", "status", "priority", "updated", "comment"]
+  maxResults: 5
+  purpose: "Unblock work to maintain momentum"
+
+## Context Switch Optimization
+
+project_handoff:
+  description: "Prepare context for project switching"
+  workflow:
+    1: "Query current active tickets"
+    2: "Cache work state and progress"
+    3: "Note next actions and blockers"
+    4: "Update time tracking if needed"
+
+client_focus_mode:
+  description: "Enter professional client work context"
+  setup:
+    - Load client-specific conventions and standards
+    - Show active sprint and priority tickets
+    - Display blocked items requiring attention
+    - Track billable time automatically
+
+## Cache Strategy
+
+cloud_id_cache:
+  duration: "7 days"
+  purpose: "Avoid repeated resource lookups"
+  fallback: "Re-fetch if expired or invalid"
+
+user_info_cache:
+  duration: "24 hours" 
+  purpose: "Cache current user details and permissions"
+  update_triggers: ["permission changes", "role updates"]
+
+query_results_cache:
+  duration: "15 minutes"
+  purpose: "Avoid duplicate queries in same session"
+  invalidation: ["ticket updates", "status changes", "new comments"]
+
+## Professional Workflow Integration
+
+time_tracking:
+  auto_start: "When moving ticket to 'In Progress'"
+  auto_pause: "When moving to 'Blocked' or 'Waiting'"
+  auto_stop: "When moving to 'Done' or 'In Review'"
+  reporting: "Weekly billable hours summary"
+
+client_communication:
+  status_updates: "Automatic progress summaries"
+  handoff_notes: "Clear documentation for team collaboration"
+  blocker_escalation: "Professional communication of issues"
+
+quality_standards:
+  before_review: "Ensure all acceptance criteria met"
+  code_quality: "Follow client-specific standards"
+  documentation: "Update relevant project docs"
+  testing: "Verify functionality before marking complete"
+
+## Solopreneur-Specific Features
+
+cross_project_intelligence:
+  pattern_extraction: "Note reusable solutions from client work"
+  knowledge_building: "Document learnings for future projects"
+  skill_development: "Track new technologies and approaches"
+  
+professional_growth:
+  client_satisfaction: "Track positive feedback and success metrics"
+  efficiency_gains: "Measure time savings from reusable patterns"
+  expertise_building: "Document specialized knowledge gained"
+
+## Error Handling & Fallbacks
+
+api_failures:
+  timeout: "Graceful degradation to cached data"
+  rate_limit: "Exponential backoff with user notification"
+  authentication: "Re-auth flow with minimal disruption"
+
+cache_corruption:
+  detection: "Validate cache integrity on startup"
+  recovery: "Rebuild cache with minimal queries"
+  fallback: "Direct API calls with reduced functionality"
+
+## Performance Targets
+
+query_efficiency:
+  target: "70% reduction in API calls vs naive approach"
+  measurement: "Track calls per session and optimize"
+  
+response_time:
+  target: "<2 seconds for startup queries"
+  optimization: "Cache-first strategy with background refresh"
+
+token_usage:
+  target: "Minimal tokens for actionable information"
+  strategy: "Essential fields only, smart result limiting"

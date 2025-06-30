@@ -1,180 +1,182 @@
-## Decision_Matrix
-Flag_Control:
-  --c7: "Force Context7→docs | --seq: Force Sequential→analysis | --magic: Force Magic→UI"
-  --pup: "Force Puppeteer→browser | --all-mcp: Enable all | --no-mcp: Disable all"
+## MCP Decision Matrix
 
-User_Triggers:
+Flag_Control:
+  --c7: "Force Context7 for documentation lookup"
+  --seq: "Force Sequential for complex analysis" 
+  --magic: "Force Magic for UI generation"
+  --pup: "Force Puppeteer for browser automation"
+  --all-mcp: "Enable all MCP servers"
+  --no-mcp: "Disable all MCP usage"
+
+Solopreneur_Triggers:
   "docs for X": "C7(resolve-library-id: X) → get-docs"
-  "how to use Y in Z": "C7(resolve-library-id: Z) → get-docs(topic: Y)"
-  "need button/form/component": "Magic(builder) → integrate"
-  "why slow/broken": "Sequential(analysis) → implement fix"
-  "design architecture": "Sequential(system design) → C7(patterns)"
+  "how to integrate Y": "C7(resolve-library-id: Y) → get-docs(topic: integration)"
+  "need component/form/UI": "Magic(builder) → integrate"
+  "debug performance/errors": "Sequential(analysis) → implement fix"
+  "design system/architecture": "Sequential(system design) → C7(patterns)"
+  "manage personal projects": "Linear(smart cache) → efficient workflows"
+  "check client work/tickets": "Jira(optimized queries) → professional delivery"
+  "document knowledge/patterns": "Notion(create pages) → knowledge compound"
+  "plan content/tutorials": "Notion(content calendar) → authority building"
 
 Context_Triggers:
-  Import_errors: "C7(resolve-library-id) → verify docs"
-  Complex_debugging: "Sequential(root cause) → native implementation"
-  UI_requests: "Magic(builder/refiner) → Puppeteer(test)"
-  Performance_issues: "Sequential(analysis) → optimize implementation"
+  Import_errors: "C7(resolve-library-id) → verify docs BEFORE implementation"
+  Complex_debugging: "Sequential(root cause analysis) → native implementation"
+  UI_requests: "Magic(builder/refiner) → Puppeteer(validation)"
+  Performance_issues: "Sequential(bottleneck analysis) → optimization"
+  Personal_projects: "Linear(smart cache) → project switching"
+  Client_work: "Jira(cached queries) → professional context switching"
 
-Research_First_Methodology:
-  External_library_detected: "C7 lookup REQUIRED (blocks without docs)"
-  New_component: "Magic search REQUIRED or existing pattern"
-  API_integration: "WebSearch REQUIRED for official docs"
-  Unknown_pattern: "Sequential thinking + research REQUIRED"
-  Confidence_less_than_90: "Implementation BLOCKED until research complete"
+Research_First_Rule:
+  External_library: "C7 lookup REQUIRED - NEVER implement without checking docs"
+  New_patterns: "Sequential thinking + research REQUIRED before coding"
+  Unknown_APIs: "WebSearch + C7 documentation REQUIRED"
+  Confidence_under_90: "Implementation BLOCKED until research complete"
 
-## Server_Capabilities_Extended
-Context7_Usage:
-  Documentation_Lookup: "resolve-library-id with user term → get-docs with topic"
-  Progressive_Loading: "Start with general docs → drill down to specifics"
-  Quality_Control: "✓Relevant docs→Proceed | ⚠Partial→Try different terms | ✗No match→alternatives"
+## Server Capabilities for Solopreneurs
 
-Sequential_Usage:
-  Complex_Analysis: "Problem decomposition → guide C7 docs lookup → combine analysis"
-  System_Design: "Architectural thinking → pattern identification → implementation planning"
-  Quality_Control: "✓Clear analysis+steps→Implement | ⚠Partial→Continue thoughts | ✗Timeout→Native fallback"
+Context7_for_Documentation:
+  Primary_use: "Library documentation lookup before implementation"
+  Workflow: "resolve-library-id → get-docs → understand → implement"
+  Solopreneur_value: "Avoid reinventing wheels, learn best practices"
+  Quality_gate: "✓Relevant docs found → Proceed | ✗No match → Research alternatives"
 
-Magic_Usage:
-  UI_Generation: "Builder with user requirements+project context → refiner if needed → integrate"
-  Component_Creation: "Match requirements → generate → integrate → test with Puppeteer"
-  Quality_Control: "✓Component matches→Integrate | ⚠Close needs changes→Refiner | ✗Poor→Try different terms"
+Sequential_for_Analysis:
+  Primary_use: "Complex debugging, architecture decisions, system design"
+  Workflow: "Problem decomposition → analysis → solution planning → implementation"
+  Solopreneur_value: "Think through complex problems systematically"
+  Quality_gate: "✓Clear analysis → Implement | ✗Unclear → Ask targeted questions"
 
-Puppeteer_Usage:
-  Browser_Automation: "Navigate → screenshot → interact → validate → test"
-  Testing_Integration: "Magic components → Puppeteer validation → report results"
-  Quality_Control: "Successful automation → document patterns | Failures → fallback approaches"
+Magic_for_UI:
+  Primary_use: "Rapid UI component generation and prototyping"
+  Workflow: "Requirements → Magic builder → refine → integrate → test"
+  Solopreneur_value: "Ship UI fast, iterate based on feedback"
+  Quality_gate: "✓Good component → Integrate | ✗Poor → Try different approach"
 
-## Token_Economics
-Budget_Allocation: "Native:0 | Light MCP:100-500 | Medium MCP:500-2K | Heavy MCP:2K-10K"
-Escalation_Strategy:
-  1: "Native first for simple tasks"
-  2: "C7 for library questions"
-  3: "Sequential for complex analysis"
-  4: "Combine MCPs for synergy"
+Linear_for_Projects:
+  Primary_use: "Personal project management with smart caching"
+  Workflow: "Smart cache → instant project data → workflow optimization"
+  Solopreneur_value: "95% faster project data access, seamless switching"
+  Auto_features: "Cache management, change detection, incremental sync"
 
-Abort_Conditions: ">50% context→native | MCP timeout/error→fallback | Diminishing returns→stop"
-Cost_Optimization: "Quick→C7 only | Architecture→Sequential | UI→Magic | Default→Native"
+Jira_for_Client_Work:
+  Primary_use: "Professional client work management with optimized queries"
+  Workflow: "Cached cloud IDs → minimal field queries → efficient updates"
+  Solopreneur_value: "Professional delivery tracking, billable time optimization"
+  Optimization: "Single JQL queries, minimal fields, cloud ID caching (see jira-optimization.yml)"
+  Integration: "Time tracking, sprint management, client communication"
+  Performance: "70% reduction in API calls, <2 second response time"
 
-UltraCompressed_Integration:
-  Activation: "--uc flag|High context|Token budget constraints"
-  Benefits: "~70% reduction | Clarity→conciseness | Legend auto-generation"
-  MCP_Usage: "Compressed requests | Efficient responses | Smart caching"
+GitHub_for_Code:
+  Primary_use: "Code management, pattern search, repository operations"
+  Workflow: "Search patterns → find solutions → adapt to current project"
+  Solopreneur_value: "Learn from existing code, avoid duplicating effort"
+  Pattern_search: "search_code for cross-repo pattern discovery"
 
-## Workflows
-Library_Research_Flow:
-  1: "C7 resolve-library-id with user term"
-  2: "Evaluate options if multiple results"
-  3: "C7 get-docs with specific topic"
-  4: "Sequential analysis if insufficient"
-  5: "Implement with native tools"
+Sanity_for_Content:
+  Primary_use: "Content management and creation workflows"
+  Workflow: "Content operations → knowledge management → publication"
+  Solopreneur_value: "Streamline content creation from development work"
 
-Complex_Analysis_Flow:
-  1: "Sequential problem decomposition"
-  2: "Guide C7 docs lookup based on analysis"
-  3: "Combine analysis + documentation"
-  4: "Create implementation plan"
-  5: "Execute with native tools"
+Notion_for_Knowledge:
+  Primary_use: "Knowledge base, documentation, content planning, pattern library"
+  Workflow: "Capture insights → organize knowledge → plan content → track patterns"
+  Solopreneur_value: "Central knowledge hub for all learning and content creation"
+  Key_features: "Database views, linked relationships, visual planning"
+  Integration: "Weekly pattern extraction, decision logging, content calendar"
 
-UI_Generation_Flow:
-  1: "Magic builder with user requirements + project context"
-  2: "Magic refiner if component needs adjustment"
-  3: "Integrate component into project structure"
-  4: "Puppeteer validation and testing"
-  5: "Document successful patterns"
+## Token Economics
 
-## Quality_Control
-Context7_Validation:
-  ✓_Relevant_docs: "Proceed with implementation"
-  ⚠_Partial_coverage: "Try different search terms or broader query"
-  ✗_No_match: "Use Sequential alternatives or ask user for clarification"
+Budget_Strategy:
+  Native_first: "0 tokens - Use for simple file operations, git commands"
+  Light_MCP: "100-500 tokens - Single C7 lookup, simple Linear queries"
+  Medium_MCP: "500-2K tokens - Sequential analysis, Magic generation"
+  Heavy_MCP: "2K-10K tokens - Multi-MCP workflows, complex operations"
 
-Sequential_Validation:
-  ✓_Clear_analysis: "Steps identified → proceed with implementation"
-  ⚠_Partial_thinking: "Continue thoughts or supplement with other MCPs"
-  ✗_Unclear_timeout: "Fallback to native tools + user questions"
+Escalation_Logic:
+  1: "Native tools for simple, well-understood tasks"
+  2: "C7 for any external library questions"
+  3: "Sequential for multi-step problems requiring analysis"
+  4: "Magic for UI generation when appropriate"
+  5: "Multi-MCP for complex workflows requiring multiple capabilities"
 
-Magic_Validation:
-  ✓_Component_matches: "Integrate into project structure"
-  ⚠_Close_needs_changes: "Use refiner with specific feedback"
-  ✗_Poor_quality: "Try different terms or fallback to manual implementation"
+Abort_Conditions:
+  ">50% context used": "Switch to native tools"
+  "MCP timeout/error": "Graceful fallback to native implementation"
+  "Diminishing returns": "Stop MCP calls, proceed with current knowledge"
+
+## Quality Control
+
+Server_Validation:
+  C7: "✓Relevant docs → Proceed | ⚠Partial → Try different terms | ✗No match → Sequential alternatives"
+  Sequential: "✓Clear analysis → Implement | ⚠Partial → Continue thoughts | ✗Unclear → Native + questions"
+  Magic: "✓Component matches needs → Integrate | ⚠Close → Refiner | ✗Poor → Different approach"
+  Linear: "✓Data current → Use cache | ⚠Stale → Incremental sync | ✗Error → Force refresh"
 
 Multi_MCP_Coordination:
-  Results_enhance_each_other: "Continue multi-MCP approach"
-  Conflict_in_recommendations: "Use most authoritative source"
-  Redundant_information: "Stop additional MCP calls"
+  Synergy: "Results should enhance each other"
+  Conflict_resolution: "Most authoritative source wins"
+  Redundancy_check: "Stop calls when sufficient information gathered"
 
-## Command_Integration
-Planning_Mode_Integration:
-  Default: "Execute immediately unless --plan flag"
-  --plan_flag: "Show detailed plan including MCP usage before execution"
-  MCP_Planning: "Explain which MCPs will be used and why"
+## Solopreneur Workflow Integration
 
-MCP_Flag_Hierarchy:
-  Explicit_flags: "Override all automatic detection"
-  Auto_activation: "Based on user triggers and context"
-  Context_triggers: "Smart activation based on error patterns"
-  --no_mcp: "Overrides all other MCP activation"
+Project_Context_Switching:
+  Personal_projects: "Linear cache current state → switch context"
+  Client_work: "Jira cache current tickets → professional handoff"
+  During_switch: "C7 lookup for new project patterns if needed"
+  After_switch: "Sequential analysis if complex context differences"
 
-Revenue_Integration:
-  Pattern_extraction: "C7 docs → reusable patterns → monetization potential"
-  Content_creation: "Magic UI components → tutorial opportunities"
-  Time_tracking: "MCP efficiency → billable hour optimization"
-  Client_privacy: "MCP usage respects confidentiality levels"
+Knowledge_Building:
+  Pattern_discovery: "GitHub search_code for similar solutions"
+  Documentation: "C7 for understanding best practices → Notion for personal notes"
+  Architecture: "Sequential for system design thinking → Notion for decision logging"
+  Implementation: "Magic for rapid prototyping → Notion for pattern extraction"
+  Knowledge_compound: "All learnings flow to Notion for long-term retrieval"
 
-## Error_Recovery
-Context7_Failures:
-  Library_not_found: "Try broader search terms → Sequential alternatives"
-  Docs_incomplete: "Supplement with Sequential analysis → fallback to native"
-  API_timeout: "Cache partial results → continue with native tools"
+Multi_Stream_Optimization:
+  Client_work: "Jira for ticket management, C7 for professional patterns, Sequential for complex problems"
+  Personal_projects: "Linear for project management, Magic for rapid iteration, Notion for documentation"
+  Content_creation: "Notion for planning, Sequential for teaching structure, Sanity for publishing"
+  Knowledge_management: "Notion for pattern library, decision log, learning capture"
 
-Sequential_Failures:
-  Timeout_limits: "Use partial analysis + note limitations → continue"
-  Token_limits: "Summarize key insights → switch to native implementation"
-  Unclear_results: "Ask clarifying questions → avoid retry without changes"
+## Best Practices
 
-Magic_Failures:
-  No_components_found: "Try different search terms once → manual implementation"
-  Poor_component_quality: "Use refiner with context → document limitations"
-  Integration_issues: "Manual integration → document for future improvement"
+DO:
+  - Use C7 for ALL external library documentation lookup
+  - Apply Sequential thinking to complex multi-step problems
+  - Leverage Linear smart cache for project management efficiency
+  - Use Magic for rapid UI prototyping and iteration
+  - Cache and reuse MCP results within sessions
+  - Validate MCP outputs before implementation
+  - Document successful MCP patterns for reuse
 
-Multi_MCP_Failures:
-  Resource_exhaustion: "Continue with single best-performing MCP"
-  Conflicting_results: "Use most reliable source → document discrepancies"
-  Partial_failures: "Continue with successful MCPs → note limitations"
+DON'T:
+  - Use MCPs for simple tasks native tools handle well
+  - Chain MCP calls without validating intermediate results
+  - Exceed 50% context with MCP usage
+  - Retry failed MCP calls without changing approach
+  - Use MCPs when immediate action is needed
 
-## Best_Practices
-DO_Patterns:
-  - "Match MCP capabilities to user needs precisely"
-  - "Set appropriate token budgets for each operation"
-  - "Validate results before proceeding with implementation"
-  - "Cache successful patterns for reuse"
-  - "Graceful fallback to native tools when needed"
-  - "Use C7 for ALL external library documentation (research-first enforced)"
-  - "Cite MCP sources in final implementation"
+OPTIMIZE:
+  - Batch similar MCP calls when possible
+  - Reuse session results to avoid duplicate calls
+  - Start with least expensive MCP options
+  - Prefer native file operations for known patterns
+  - Document successful MCP workflows for future reference
 
-DONT_Patterns:
-  - "Use MCPs for simple tasks native tools handle well"
-  - "Chain MCPs without validation between steps"
-  - "Exceed 50% context usage without user awareness"
-  - "Retry failed operations without changing approach"
-  - "Use MCPs when immediate response needed"
+## Research-First Enforcement
 
-OPTIMIZE_Patterns:
-  - "Batch similar MCP calls when possible"
-  - "Reuse session results across related operations"
-  - "Start with least expensive MCP options"
-  - "Prefer native tools for file operations"
-  - "Document successful MCP patterns for team reuse"
+Critical_Rule: "NEVER implement external library integrations without C7 documentation lookup"
 
-## Session_Management
-MCP_Session_Intelligence:
-  Context_preservation: "Cache MCP results across commands in session"
-  Pattern_recognition: "Learn which MCP combinations work best for user"
-  Preference_adaptation: "Adapt MCP usage to user's working style"
-  Error_learning: "Remember failed approaches to avoid repetition"
+Implementation_Blocks:
+  - Import statements for unknown libraries → C7 required
+  - API integrations → WebSearch + C7 required
+  - Framework usage → C7 patterns required
+  - Complex debugging → Sequential analysis required
 
-Revenue_Optimization:
-  Billable_efficiency: "Track MCP usage impact on billable hour productivity"
-  Pattern_monetization: "Extract sellable patterns from MCP-assisted development"
-  Content_opportunities: "Flag MCP-assisted solutions for tutorial potential"
-  ROI_tracking: "Measure time saved vs MCP token costs"
+Confidence_Thresholds:
+  - >90% confidence → Proceed with implementation
+  - 70-90% confidence → Quick C7 lookup for validation
+  - <70% confidence → Full research cycle required
+
+This ensures solopreneurs build on solid foundations rather than guessing or reinventing solutions.
