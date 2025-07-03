@@ -1,0 +1,135 @@
+# Behavioral Engine Configuration for Solo-Claude v4
+# Implements 3D decision space: Identity × Energy × Context
+
+Behavioral_Engine:
+  version: "4.0"
+  
+  Energy_States:
+    high:
+      description: "Peak performance hours - tackle complex challenges"
+      indicators:
+        - time_ranges: ["09:00-11:00", "14:00-16:00"]
+        - coffee_consumed: true
+        - recent_break: true
+      suitable_tasks:
+        - architecture_design
+        - complex_debugging
+        - creative_solutions
+        - system_integration
+    
+    medium:
+      description: "Steady state - productive routine work"
+      indicators:
+        - time_ranges: ["11:00-14:00", "16:00-18:00"]
+        - sustained_activity: true
+      suitable_tasks:
+        - feature_implementation
+        - code_reviews
+        - documentation
+        - testing
+    
+    low:
+      description: "Recovery mode - administrative and light tasks"
+      indicators:
+        - time_ranges: ["18:00-21:00", "06:00-09:00"]
+        - long_session: true
+        - error_streak: true
+      suitable_tasks:
+        - email_responses
+        - task_organization
+        - light_refactoring
+        - learning_content
+
+  Identity_Preservation:
+    core_values:
+      - autonomy: "Maintain control over decisions"
+      - mastery: "Continuous skill development"
+      - purpose: "Meaningful impact through code"
+    
+    reframe_patterns:
+      tedious_task: "Building foundation for creative work"
+      bug_fixing: "Detective work uncovering system insights"
+      documentation: "Teaching future self and team"
+      testing: "Protecting users from frustration"
+
+  Context_Awareness:
+    project_modes:
+      solo_project:
+        description: "Personal projects with full autonomy"
+        optimizations:
+          - experimental_features: enabled
+          - perfectionism_check: relaxed
+          - learning_mode: aggressive
+      
+      client_work:
+        description: "Professional deliverables"
+        optimizations:
+          - quality_gates: strict
+          - documentation: comprehensive
+          - testing: thorough
+      
+      open_source:
+        description: "Community contributions"
+        optimizations:
+          - code_style: community_standard
+          - pr_readiness: high
+          - communication: detailed
+
+  Decision_Matrix:
+    routing_algorithm: |
+      function routeTask(task, energy, identity, context) {
+        // Calculate alignment score
+        const energyMatch = calculateEnergyTaskAlignment(task.complexity, energy.level);
+        const identityMatch = calculateIdentityAlignment(task.type, identity.values);
+        const contextMatch = calculateContextFit(task.requirements, context.mode);
+        
+        // 3D decision space
+        const score = (energyMatch * 0.4) + (identityMatch * 0.3) + (contextMatch * 0.3);
+        
+        if (score > 0.8) return "EXECUTE_NOW";
+        if (score > 0.6) return "EXECUTE_WITH_SUPPORT";
+        if (score > 0.4) return "DEFER_OR_DELEGATE";
+        return "REFRAME_OR_REJECT";
+      }
+
+  Autonomous_Evolution:
+    learning_rate: 0.1
+    pattern_threshold: 5
+    
+    evolution_triggers:
+      - consistent_success_pattern
+      - repeated_failure_detection
+      - energy_pattern_shift
+      - context_change_frequency
+    
+    adaptation_mechanisms:
+      - update_energy_predictions
+      - refine_task_classifications
+      - optimize_routing_weights
+      - personalize_reframe_messages
+
+  Compound_Learning:
+    capture_points:
+      - task_completion
+      - error_resolution
+      - pattern_recognition
+      - workflow_optimization
+    
+    acceleration_factors:
+      - cross_project_patterns: 2.0
+      - repeated_solutions: 1.5
+      - documented_learnings: 1.8
+      - shared_knowledge: 2.5
+
+  Predictive_Behaviors:
+    models:
+      - energy_cycle_prediction
+      - task_complexity_estimation
+      - success_probability_calculation
+      - bottleneck_anticipation
+    
+    proactive_actions:
+      - suggest_break_before_fatigue
+      - prepare_resources_for_predicted_task
+      - warn_about_complexity_mismatch
+      - offer_alternative_approaches

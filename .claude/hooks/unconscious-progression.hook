@@ -1,0 +1,181 @@
+#!/usr/bin/env bash
+# Unconscious Progression Tracker for Solo-Claude v4
+# Tracks and reinforces positive behaviors without explicit awareness
+
+# Configuration
+PROGRESSION_DB="${HOME}/.claude/unconscious_progression.json"
+SKILL_THRESHOLD=5  # Actions before skill becomes "unconscious"
+NOTIFICATION_THRESHOLD=10  # Celebrate milestones subtly
+
+# Initialize progression database
+init_progression_db() {
+    if [[ ! -f "$PROGRESSION_DB" ]]; then
+        mkdir -p "$(dirname "$PROGRESSION_DB")"
+        echo '{
+            "skills": {},
+            "streaks": {},
+            "milestones": [],
+            "last_activity": null
+        }' > "$PROGRESSION_DB"
+    fi
+}
+
+# Track skill progression
+track_skill() {
+    local skill_type="$1"
+    local skill_name="$2"
+    local success="$3"  # true/false
+    local timestamp=$(date +"%s")
+    
+    # Update skill count
+    local current_count=$(jq -r --arg type "$skill_type" --arg name "$skill_name" \
+        '.skills[$type][$name].count // 0' "$PROGRESSION_DB")
+    
+    local new_count=$((current_count + 1))
+    
+    # Update skill data
+    jq --arg type "$skill_type" \
+       --arg name "$skill_name" \
+       --arg count "$new_count" \
+       --arg ts "$timestamp" \
+       --arg success "$success" \
+       '.skills[$type][$name] = {
+           count: ($count | tonumber),
+           last_used: $ts,
+           success_rate: (if .skills[$type][$name].success_rate then
+               ((.skills[$type][$name].success_rate * (.skills[$type][$name].count - 1) + ($success == "true" | if . then 1 else 0 end)) / ($count | tonumber))
+           else
+               ($success == "true" | if . then 1 else 0 end)
+           end),
+           unconscious: (($count | tonumber) >= '$SKILL_THRESHOLD')
+       }' "$PROGRESSION_DB" > "${PROGRESSION_DB}.tmp" && \
+       mv "${PROGRESSION_DB}.tmp" "$PROGRESSION_DB"
+    
+    # Check for unconscious competence achievement
+    if [[ $new_count -eq $SKILL_THRESHOLD ]]; then
+        echo "🌟 Natural proficiency developed: $skill_name"
+    fi
+}
+
+# Track behavioral streaks
+track_streak() {
+    local behavior="$1"
+    local today=$(date +"%Y-%m-%d")
+    
+    # Get current streak data
+    local last_date=$(jq -r --arg behavior "$behavior" \
+        '.streaks[$behavior].last_date // ""' "$PROGRESSION_DB")
+    local current_streak=$(jq -r --arg behavior "$behavior" \
+        '.streaks[$behavior].current // 0' "$PROGRESSION_DB")
+    
+    # Calculate streak
+    if [[ "$last_date" == "$today" ]]; then
+        # Already tracked today
+        return 0
+    elif [[ -z "$last_date" ]] || [[ $(date -d "$last_date + 1 day" +"%Y-%m-%d" 2>/dev/null || date -v+1d -jf "%Y-%m-%d" "$last_date" +"%Y-%m-%d") == "$today" ]]; then
+        # Continue streak
+        current_streak=$((current_streak + 1))
+    else
+        # Streak broken, start new
+        current_streak=1
+    fi
+    
+    # Update streak data
+    jq --arg behavior "$behavior" \
+       --arg date "$today" \
+       --arg streak "$current_streak" \
+       '.streaks[$behavior] = {
+           current: ($streak | tonumber),
+           last_date: $date,
+           best: (if .streaks[$behavior].best then
+               [.streaks[$behavior].best, ($streak | tonumber)] | max
+           else
+               ($streak | tonumber)
+           end)
+       }' "$PROGRESSION_DB" > "${PROGRESSION_DB}.tmp" && \
+       mv "${PROGRESSION_DB}.tmp" "$PROGRESSION_DB"
+    
+    # Subtle celebration for milestones
+    if [[ $((current_streak % NOTIFICATION_THRESHOLD)) -eq 0 ]]; then
+        echo "✨ Flow state maintained: $behavior"
+    fi
+}
+
+# Detect and reinforce positive patterns
+detect_positive_patterns() {
+    local action="$1"
+    
+    # Positive behavior indicators
+    local positive_indicators=(
+        "commit.*fix"
+        "test.*pass"
+        "refactor"
+        "document"
+        "optimize"
+        "clean"
+        "implement.*success"
+    )
+    
+    for indicator in "${positive_indicators[@]}"; do
+        if echo "$action" | grep -qiE "$indicator"; then
+            track_streak "positive_action"
+            return 0
+        fi
+    done
+}
+
+# Generate unconscious insights
+generate_unconscious_insights() {
+    # Skills that became unconscious
+    local unconscious_skills=$(jq -r '.skills | to_entries[] | .value | to_entries[] | select(.value.unconscious == true) | .key' "$PROGRESSION_DB" | wc -l)
+    
+    # Best streaks
+    local best_streak=$(jq -r '.streaks | to_entries | map(.value.best) | max // 0' "$PROGRESSION_DB")
+    
+    # Only show if significant progress
+    if [[ $unconscious_skills -gt 0 ]] || [[ $best_streak -gt 7 ]]; then
+        echo "💫 Natural abilities emerging..."
+    fi
+}
+
+# Main execution
+main() {
+    local action="${1:-}"
+    local context="${2:-}"
+    
+    init_progression_db
+    
+    if [[ -n "$action" ]]; then
+        # Extract skill type and name from action
+        local skill_type="command"
+        local skill_name="$action"
+        
+        if echo "$action" | grep -qE "^/[a-z]+"; then
+            skill_type="slash_command"
+            skill_name=$(echo "$action" | grep -oE "^/[a-z]+")
+        elif echo "$action" | grep -qE "^(git|npm|cargo|python)"; then
+            skill_type="tool"
+            skill_name=$(echo "$action" | awk '{print $1}')
+        fi
+        
+        # Track the skill
+        track_skill "$skill_type" "$skill_name" "true"
+        
+        # Detect positive patterns
+        detect_positive_patterns "$action"
+        
+        # Update last activity
+        jq --arg ts "$(date +"%s")" '.last_activity = $ts' "$PROGRESSION_DB" > "${PROGRESSION_DB}.tmp" && \
+            mv "${PROGRESSION_DB}.tmp" "$PROGRESSION_DB"
+        
+        # Occasionally generate insights
+        if [[ $((RANDOM % 20)) -eq 0 ]]; then
+            generate_unconscious_insights
+        fi
+    fi
+}
+
+# Execute if called directly
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi
