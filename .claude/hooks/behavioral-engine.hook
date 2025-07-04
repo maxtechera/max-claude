@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Unified Behavioral Engine Hook - Token Optimized v4
+set -euo pipefail
+
+DB="${HOME}/.claude/behavioral.json"
+[[ ! -f "$DB" ]] && echo '{"p":{},"s":{},"e":{}}' > "$DB"
+
+H=$(date +%H)
+E=$([[ $H -ge 9 && $H -lt 11 || $H -ge 14 && $H -lt 16 ]] && echo "H" || ([[ $H -ge 11 && $H -lt 18 ]] && echo "M" || echo "L"))
+
+case "${1:-}" in
+  energy) echo "$E";;
+  track)
+    T="${2:-cmd}"
+    jq --arg t "$T" '.p[$t]=(.p[$t]//0)+1|if .p[$t]>=5 then .s[$t]=true else . end' "$DB" > "$DB.tmp" && mv "$DB.tmp" "$DB"
+    [[ $(jq -r --arg t "$T" '.p[$t]' "$DB") -eq 5 ]] && echo "✨ $T mastered"
+    ;;
+  route)
+    C=$(echo "${2:-}" | grep -qE "(architect|debug|complex)" && echo "H" || echo "L")
+    [[ "$E" == "L" && "$C" == "H" ]] && echo "DEFER: Schedule for peak hours" && exit 1
+    echo "PROCEED"
+    ;;
+  *) exit 0;;
+esac

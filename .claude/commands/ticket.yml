@@ -1,0 +1,7 @@
+# Ticket v4 Optimized
+T:
+  route: |
+    E=$(.claude/hooks/behavioral-engine.hook energy)
+    C=$(echo "$1" | grep -qE "(complex|arch|debug)" && echo "H" || echo "L")
+    [[ "$E" == "L" && "$C" == "H" ]] && echo "Defer: Peak hours better" || echo "Go"
+  auto: {95: delegate, 85: suggest, 70: option, 50: local}
