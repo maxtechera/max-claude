@@ -1,0 +1,16 @@
+# Behavioral Engine v4 - Token Optimized
+BE:
+  energy:
+    H: {t: ["09-11","14-16"], tasks: [arch,debug,create]}
+    M: {t: ["11-14","16-18"], tasks: [impl,review,test]}
+    L: {t: ["18-21","06-09"], tasks: [email,organize,learn]}
+  
+  identity: {auto: "control", master: "skill", purpose: "impact"}
+  
+  routing: |
+    E*C match: GO
+    L+H task: DEFER
+    H+L task: BATCH
+  
+  evolve: {rate: 0.1, threshold: 5}
+  learn: {capture: [complete,error,pattern], boost: 2.0}
